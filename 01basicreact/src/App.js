@@ -1,8 +1,13 @@
+import Chai from "./Chai.jsx"
 
 
 function App() {
   return (
-   <h1>Hello | Saugat  </h1>
+    <>
+    <Chai/>
+     
+    </>
+ 
   );
 }
 
