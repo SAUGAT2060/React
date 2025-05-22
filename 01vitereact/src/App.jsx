@@ -1,8 +1,16 @@
+import Chai from './chai.jsx';
 function App() {
+
  
 
   return (
-<h1> React with bit | SR</h1>
+    <>
+     <Chai/>
+     <h1>Yo</h1>
+     <p>K xa yar</p>
+    
+    </>
+     
   )
 }
 
