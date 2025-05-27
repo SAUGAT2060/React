@@ -1,61 +1,50 @@
-
-import { useState  } from 'react'
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  let [counter, setCount] = useState(12)
 
-  const [counter , setCounter]  = useState(15)
-
-   
- const addValue = ()=>{
-  if(counter >=20){
-  
-  
-    const button= document.querySelector('.first-button');
-    button.innerHTML="Woops! Can't add more than 20 bud";
+ const increase=()=>{
+  if(counter>=20){
+const btn1= document.querySelector('.first-button');  
+btn1.innerHTML='Max limit';
   }
   else{
-    const button= document.querySelector('.first-button');
-    button.innerHTML="Add Value";
-  setCounter(counter +1) ;
+    const btn1= document.querySelector('.first-button');
+    btn1.innerHTML= 'Add Value';
+    setCount(counter+1);
+   
+
   }
-
-
-
  }
- const removeValue =()=>{
+  
+ const decrease= ()=>{
 
-if(counter<=0){
-  const button = document.querySelector('.second-button');
-  button.innerHTML="Woops ! Can't go below 0 bud"
+  if(counter<=0){
+    const btn2 = document.querySelector('.second-button');
+    btn2.innerHTML='Lowest limit';
+
+  }
+  else{
+    const btn2= document.querySelector('.second-button');
+    btn2.innerHTML = 'Decrease Value';
+    setCount(counter-1);
+  }
+ }
+
 
   
-}
-else{
-  const button = document.querySelector('.second-button');
-  button.innerHTML="Remove Value"
-setCounter(counter -1);
-}
+
   
- }
 
   return (
     <>
-      <h1>Chai aur React</h1>
-      <h2>Counter Value : {counter}</h2>
-      <button 
-      
-      className="first-button"
-      onClick= {addValue}
-      
-      >Add Value</button>
+      <h1>Counter:{counter}</h1>
+      <button className='first-button' onClick={increase}>Increase</button>
       <br />
-      <button
-      className="second-button"
-      onClick= {removeValue}
-      >Remove Value</button>
+      <button className='second-button' onClick={decrease}>Decrease</button>
     </>
   )
 }
