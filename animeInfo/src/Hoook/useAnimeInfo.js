@@ -6,15 +6,12 @@ function useAnimeInfo(animeInfo){
 
   useEffect(()=>{
 
-    fetch('https://api.jikan.moe/v4/anime/21')
-    .then((res)=>{res.json()})
-    .then((res)=>{setData(res[character])})
+    fetch(`https://api.jikan.moe/v4/anime/${animeInfo}`)
+    .then((res)=>res.json())
+    .then((res)=>{setData(res.data)})
 
-  },[])
+  },[animeInfo])
 
-
-
+  return data;
 }
-
-
 export  default useAnimeInfo;

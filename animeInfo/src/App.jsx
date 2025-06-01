@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+
 import './App.css'
+import useAnimeInfo from './Hoook/useAnimeInfo'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const anime = useAnimeInfo(21);
+ const apiId ='Api';
+ return (
+ 
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  <>
+  <label
+   htmlFor={apiId} 
+  >Api for Anime : </label>
+  <input
+ 
+  id={apiId}
+     placeholder='Code to get the Anime'/>
+     
+     
+     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 text-white flex items-center justify-center p-6">
+       {anime.title ? (
+         <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-2xl w-full">
+           <h1 className="text-3xl font-bold mb-4 text-center">{anime.title}</h1>
+           <img
+             src={anime.images?.jpg?.image_url}
+             alt={anime.title}
+             className="w-full h-auto rounded-xl shadow-md mb-4" />
+           <p className="text-base text-white/80 leading-relaxed">{anime.synopsis}</p>
+         </div>
+       ) : (
+         <p className="text-xl text-white animate-pulse">Loading anime info...</p>
+       )}
+     </div>
+     </>
+);
+
 }
 
 export default App
