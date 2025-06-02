@@ -4,19 +4,41 @@ import './App.css'
 import useAnimeInfo from './Hoook/useAnimeInfo'
 
 function App() {
-  const anime = useAnimeInfo(21);
- const apiId ='Api';
+  const [inputValue,setInputValue] = useState('');
+  const [query,setQuery] = useState('');
+  const anime = useAnimeInfo(query);
+ 
+
+ const handleChange=(e)=>{
+
+ setInputValue(e.target.value);
+  
+ };
+
+ const handleClick=()=>{
+  setQuery(inputValue);
+ }
  return (
  
 
   <>
   <label
-   htmlFor={apiId} 
+   htmlFor="Api" 
   >Api for Anime : </label>
   <input
- 
-  id={apiId}
-     placeholder='Code to get the Anime'/>
+  type='text'
+  id='Api'
+ onChange={handleChange}
+  value={inputValue}
+  
+  
+     placeholder='Code to get the xAnime'/>
+    
+     <button
+     onClick={handleClick}
+      className="bg-indigo-600 text-white px-4 py-2 rounded ml-2 hover:bg-indigo-700 transition"
+     >Fetch Anime</button>
+
      
      
      <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 text-white flex items-center justify-center p-6">
