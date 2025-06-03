@@ -20,16 +20,7 @@ function Footer() {
               GitHub
             </a>
           </li>
-          <li>
-            <a href="/about" className="hover:text-orange-500 transition duration-150">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="/contact" className="hover:text-orange-500 transition duration-150">
-              Contact
-            </a>
-          </li>
+          
         </ul>
       </div>
 

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 export default function Home() {
+
+  const [query,setQuery ] = useState('')
+  const navigate = useNavigate();
+
+  const handleSearch =()=> {
+
+    navigate(`/result/${query}`);
+
+  }
   return (
     <div className="max-w-xl mx-auto mt-12 px-4">
       {/* 🔥 GIF Banner */}
@@ -37,7 +47,11 @@ export default function Home() {
           text-gray-800
           placeholder:text-gray-400
         "
+         value={query}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter a book title or author..."
+
+
       />
 
       {/* 🚀 Button */}
@@ -55,6 +69,7 @@ export default function Home() {
           transition
           duration-200
         "
+        onClick={handleSearch}
       >
         Fetch Book
       </button>

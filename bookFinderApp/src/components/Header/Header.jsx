@@ -24,42 +24,7 @@ export default function Header() {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 underline underline-offset-4"
-                  : "hover:text-orange-400 transition duration-150"
-              }
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 underline underline-offset-4"
-                  : "hover:text-orange-400 transition duration-150"
-              }
-            >
-              Contact
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/github"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 underline underline-offset-4"
-                  : "hover:text-orange-400 transition duration-150"
-              }
-            >
-              GitHub
-            </NavLink>
-          </li>
+          
         </ul>
       </nav>
     </header>

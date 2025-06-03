@@ -7,7 +7,7 @@ import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider} from 
 import Home from './components/Home/Home.jsx'
 import Layout from './Layout.jsx'
 import Result from './components/Result/Result.jsx'
-
+import { Loader } from './loader/Loader.js'
 
 
 const router = createBrowserRouter(
@@ -15,7 +15,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<Home/>}/>
-      <Route path='result' element={<Result/>}/>
+     <Route
+  path="result/:query"
+  element={<Result />}
+  loader={Loader}
+/>
+
     </Route>
 
   )
