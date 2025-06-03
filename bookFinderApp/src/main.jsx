@@ -6,11 +6,16 @@ import App from './App.jsx'
 import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider} from 'react-router-dom'
 import Home from './components/Home/Home.jsx'
 import Layout from './Layout.jsx'
+import Result from './components/Result/Result.jsx'
+
+
+
 const router = createBrowserRouter(
 
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<Home/>}/>
+      <Route path='result' element={<Result/>}/>
     </Route>
 
   )
