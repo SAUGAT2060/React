@@ -1,5 +1,6 @@
 import  React ,{useState } from 'react'
 import './App.css'
+import NotesForm from './components/NotesForm'
 
 function App() {
   const [note, setNotes] = useState([{
@@ -25,9 +26,12 @@ function App() {
        <div >Id:{notes.id}</div>
       <h1>{notes.title}</h1>
      
-      <h2>{notes.content}</h2>
+      <h2>{notes.content}</h2> 
+      
+       <NotesForm/>
       </React.Fragment>
 
+      
      )))}
     </div>
   )
