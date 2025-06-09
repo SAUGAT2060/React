@@ -8,16 +8,9 @@ function App() {
           title:"Note One",
            content: "This is my first note"
 
-  },{
-           id:2,
-          title:"Note two",
-           content: "This is my second note"
-  },
-{
-          id:3,
-          title:"Note three",
-           content: "This is my third note"
-}])
+  }],
+
+)
 
   return (
     <div>
