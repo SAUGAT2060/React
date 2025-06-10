@@ -13,8 +13,9 @@ function NotesForm() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto mt-8">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <h1 className='text-center font-bold'>Note Taking App</h1>
         <label htmlFor="noteTitle" className="text-gray-700 font-semibold">
-          Add Note:
+          Notes:
         </label>
         <input
           id="noteTitle"
