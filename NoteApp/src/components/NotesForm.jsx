@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import { useNotes } from '../context/NotesContext'
 
 function NotesForm() {
 
   const [notes,setNotes] = useState('')
+  const {addNotes}= useNotes
 
+  
   const getnotes = (e)=>setNotes(e.target.value)
   const handleSubmit=(e)=>{
     e.preventDefault()
-    console.log(notes)
+    
     
   }
   return (
