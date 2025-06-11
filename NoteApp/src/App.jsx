@@ -1,48 +1,46 @@
-import  React ,{useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import NotesForm from './components/NotesForm'
-import { NotesContextProvider,notesContext,useNotes } from './context/NotesContext'
+import NotesList from './components/NotesList'  // Fix typo here: NotesList, not Noteslist
+import { NotesContextProvider } from './context/NotesContext'
 
 function App() {
+  const [notes, setNotes] = useState([])
 
-
- const [notes,setNotes] = useState([])
-
-  const addNotes=(note)=>{
-    console.log(setNotes((prev)=>[{id:Date.now(),...notes},...prev]))
-  }
-  const updateNotes=(id,note)=>{
-    setNotes((prev)=>prev.map((prevnote)=>(prevnote.id===prev.id?note:prev)))
-    
-  }
-  const deleteNotes=(id)=>{
-    setNotes((prev)=>{
-
-      return prev.filter((prevNote)=>{
-        return prevNote.id!==id
-      })
-
-    })
+  // Correct addNotes to properly add a new note
+  const addNotes = (note) => {
+    setNotes((prev) => [{ id: Date.now(), ...note }, ...prev])
   }
 
-  useEffect(()=>{
+  // Fix updateNotes: use id argument to match, not prev.id
+  const updateNotes = (id, updatedNote) => {
+    setNotes((prev) =>
+      prev.map((note) => (note.id === id ? updatedNote : note))
+    )
+  }
 
-   const notes = JSON.parse(localStorage.getItem("notes"))
+  const deleteNotes = (id) => {
+    setNotes((prev) => prev.filter((note) => note.id !== id))
+  }
 
-   if(notes && notes.length) {
-    setNotes(notes)
-   }
-  },[notes])
+  // Load from localStorage only once, on mount: use empty dependency array []
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem('notes'))
+    if (storedNotes && storedNotes.length) {
+      setNotes(storedNotes)
+    }
+  }, [])
 
-  useEffect(()=>{
-    localStorage.setItem("notes",JSON.stringify(notes))
-  })
+  // Save notes to localStorage whenever notes change: add [notes] dependency
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   return (
-   <NotesContextProvider value={{notes,addNotes,updateNotes,deleteNotes}}>
-   <NotesForm/>
-   
-   </NotesContextProvider>
+    <NotesContextProvider value={{ notes, addNotes, updateNotes, deleteNotes }}>
+      <NotesForm />
+      <NotesList />
+    </NotesContextProvider>
   )
 }
 

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react'
 
 
 export const notesContext = createContext({
-notes :[
+notes:[
   {
     id:1,
     content:"Hi I am gonna code until i pass out",

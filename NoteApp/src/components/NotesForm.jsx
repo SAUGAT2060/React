@@ -2,17 +2,24 @@ import React, { useState } from 'react'
 import { useNotes } from '../context/NotesContext'
 
 function NotesForm() {
+  const [notes, setNotes] = useState('')
+  const { addNotes } = useNotes()
 
-  const [notes,setNotes] = useState('')
-  const {addNotes}= useNotes
+  const getnotes = (e) => setNotes(e.target.value)
 
-  
-  const getnotes = (e)=>setNotes(e.target.value)
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-    
-    
+    if (!notes.trim()) return
+
+    addNotes({
+      id: Date.now(),       // unique id
+      content: notes,       // note content
+      completed: false      // default completed state
+    })
+
+    setNotes('')
   }
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto mt-8">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -24,13 +31,12 @@ function NotesForm() {
           id="noteTitle"
           type="text"
           placeholder="Enter the note title"
+          value={notes}
           className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={getnotes}
-
         />
         <button
           type="submit"
-
           className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         >
           Add
