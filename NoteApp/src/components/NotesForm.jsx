@@ -12,9 +12,9 @@ function NotesForm() {
     if (!notes.trim()) return
 
     addNotes({
-      id: Date.now(),       // unique id
-      content: notes,       // note content
-      completed: false      // default completed state
+      id: Date.now(),       
+      content: notes,     
+      completed: false      
     })
 
     setNotes('')

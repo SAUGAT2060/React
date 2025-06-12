@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import NotesForm from './components/NotesForm'
-import NotesList from './components/NotesList'  // Fix typo here: NotesList, not Noteslist
+import NotesList from './components/NotesList'  
 import { NotesContextProvider } from './context/NotesContext'
 
 function App() {

@@ -46,13 +46,13 @@ function SingleNote({ note, updateNotes, deleteNotes }) {
       <div className="flex gap-2">
         <button
           onClick={handleUpdate}
-          className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-green-600"
         >
           Update
         </button>
         <button
           onClick={handleDelete}
-          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-red-600"
         >
           Delete
         </button>
