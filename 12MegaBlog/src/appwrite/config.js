@@ -11,7 +11,7 @@ export class Service{
     .setEndpoint(conf.appwriteUrl)
     .setProject(conf.appwriteProjectId)
 
-    this.databases = new Databases(this.client);
+    this.databases = new Databases(this.client); onEditorChange={onChange}
     this.bucket= new Storage(this.client)
   }
 
