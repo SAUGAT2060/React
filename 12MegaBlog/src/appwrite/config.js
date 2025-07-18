@@ -1,7 +1,7 @@
 import conf from '../conf/conf'
 import {Client,ID,Databases,Storage,Query} from 'appwrite';
 
-export class Service{
+export  class Service{
 
   client = new Client();
   databases;
@@ -11,7 +11,7 @@ export class Service{
     .setEndpoint(conf.appwriteUrl)
     .setProject(conf.appwriteProjectId)
 
-    this.databases = new Databases(this.client); onEditorChange={onChange}
+    this.databases = new Databases(this.client);
     this.bucket= new Storage(this.client)
   }
 
@@ -104,7 +104,7 @@ export class Service{
   async uploadFile(file){
     try {
       await this.bucket.createFile(
-        conf.appwriteBucketid,
+        conf.appwriteBucketId,
         ID.unique(),
         file
       )
@@ -117,7 +117,7 @@ export class Service{
   async deleteFile(fileId){
     try {
       await this.bucket.deleteFile(
-        conf.appwriteBucketid,
+        conf.appwriteBucketId,
         fileId
       )
       return true
@@ -130,9 +130,11 @@ export class Service{
   }
 
   getFilePreview(fileId){
-    return this.bucket.getFilePreview(
-      conf.appwriteBucketid,
+    return this.bucket.getFileView(
+      conf.appwriteBucketId,
       fileId
     )
   }
 }
+const service = new Service()
+export default service;
